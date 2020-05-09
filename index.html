@@ -8,14 +8,20 @@
     <title>Personal Library</title>
 </head>
 <body>
+    <h1>Your Personal Library</h1>
     <div class="library">
     <div class="book-card">
-        <form action="">
-            <input type="text" name="Book Title" id="book-title"><label for="Book Title">Title</label>
-            <input type="text" name="Author" id="author"><label for="Author">Author</label>
-            <input type="number" name="Pages" id="pages"><label for="pages">Number of Pages</label>
-            <input type="checkbox" checked="checked" name="readStatus" id="readStatus"><label for="readStatus">Read</label>
-            <input type="submit" value="Add Book">
+        <h3>Add Book</h3>
+        <form>
+            <input type="text" name="Book Title" autocomplete="off" required>
+                <label for="Book Title">Title</label>
+            <input type="text" name="Author" autocomplete="off" required>
+                <label for="Author">Author</label>
+            <input type="number" min="1" name="Pages" autocomplete="off" required>
+                <label for="Pages">Number of Pages</label>
+            <input type="checkbox" name="readStatus" id="checkbox">
+                <label for="readStatus">Read</label>
+            <input  class="submit" type="submit" value="Add Book">
         </form>
     </div>
     <div class="library-container">
