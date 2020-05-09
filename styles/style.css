@@ -12,6 +12,12 @@ body{
     background: rgb(69, 73, 122, 0.9);
 }
 
+@media (max-width: 1200px) {
+    body {
+        width: 1000px;
+    }
+}
+
 h1 {
     text-align: center;
     padding: 20px;
@@ -46,7 +52,6 @@ form {
     flex-direction: column;
     justify-content: stretch;
     padding: 20px;
-    position: relative;
 }
 
 input {
@@ -60,13 +65,12 @@ input {
 
 label {
     pointer-events: none;
-    margin-top: 0;
+    margin-top: 5px;
 }
 
-#checkbox {
-    width: 12px;
-    height: 12px;
-    margin-bottom: 5px;
+#readStatus {
+    margin-top: 20px;
+    width: 60px;
 }
 
 .submit {
@@ -81,12 +85,14 @@ label {
 
 .library-container {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    height: 66vh;
+    height: 60vh;
     border-radius: 4px;
     padding: 20px;
     overflow-y: auto;
     scroll-behavior: smooth;
     background-color: white ;
+    width: 60%;
+    height: 65vh;
 }
 
 
@@ -112,3 +118,34 @@ table tr:nth-child(2) > td {
     margin-top: 10px;
 }
 
+
+td {
+    text-align: center;
+}
+
+.read-button {
+    padding: 7px;
+    border: none;
+    background-color: blue;
+    font-weight: bold;
+    border-radius: 3px;
+    box-shadow: 1px 1px;
+}
+.read-button:hover {
+    transform: scale(1.1);
+    background-color: green;
+}
+
+.delete-button {
+    background-color:white;
+    padding: 5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    box-shadow: 1px 1px rgb(63, 56, 56);
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 25px;
+}
+
+.delete-button:hover {
+    transform: scale(1.1);
+}

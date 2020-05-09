@@ -13,32 +13,27 @@
     <div class="book-card">
         <h3>Add Book</h3>
         <form>
-            <input type="text" name="Book Title" autocomplete="off" required>
+            <input type="text" name="Book Title" autocomplete="off" id="book-title" required>
                 <label for="Book Title">Title</label>
-            <input type="text" name="Author" autocomplete="off" required>
+            <input type="text" name="Author" autocomplete="off" id="author" required>
                 <label for="Author">Author</label>
-            <input type="number" min="1" name="Pages" autocomplete="off" required>
+            <input type="number" min="1" name="Pages" autocomplete="off" id="pages" required>
                 <label for="Pages">Number of Pages</label>
-            <input type="checkbox" name="readStatus" id="checkbox">
-                <label for="readStatus">Read</label>
+                <select name="readStatus" id="readStatus">
+                    <option value="Read">Read</option>
+                    <option value="Unread">Unread</option>
+                </select>
             <input  class="submit" type="submit" value="Add Book">
         </form>
     </div>
     <div class="library-container">
-        <table>
+        <table id="book-list">
             <tr>
                 <th>Book</th>
                 <th>Author</th>
-                <th>Number of Pages</th>
+                <th>Pages</th>
                 <th>Read</th>
                 <th>Delete</th>
-            </tr>
-            <tr>
-                <td>What</td>
-                <td>Is</td>
-                <td>This</td>
-                <td>Shit</td>
-                <td>Dude</td>
             </tr>
         </table>
     </div>
