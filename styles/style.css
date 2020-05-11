@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
 *{
     box-sizing: border-box;
     padding: 0;
@@ -7,20 +8,34 @@
 body{
     margin: 0;
     padding: 0;
-    display: block;
+    display: flex;
+    flex-direction: column;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background: rgb(69, 73, 122, 0.9);
 }
 
-@media (max-width: 1200px) {
-    body {
-        width: 1000px;
+.welcome-container {
+    height: 100vh;
+    background-image: url(/images/bookshelf.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 480px) {
+    .library {
+        display: flex;
+        flex-direction: column;
     }
 }
 
 h1 {
     text-align: center;
     padding: 20px;
+    font-family: 'Cedarville Cursive', cursive;
+    font-weight: 900;
+    font-size: 3rem;
+    color: rgb(255, 255, 255);
 }
 
 .library {
@@ -29,6 +44,7 @@ h1 {
     align-items: center;
     justify-content: space-evenly;
     flex-direction: row;
+    height: 100vh;
 }
 .book-card {
     display: flex;
@@ -121,6 +137,7 @@ table tr:nth-child(2) > td {
 
 td {
     text-align: center;
+    padding: 10px;
 }
 
 .read-button {
