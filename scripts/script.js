@@ -17,25 +17,26 @@ let tableHeader = `
 <th>Read</th>
 <th>Delete</th>
 </tr>
-`;
+`
+
+
 //Book Class
-class Book{
-    constructor(title, author, pages, read){
+function Book(title, author, pages, read){
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
     }
     //Text value of book row
-    bookCells() {
+function bookCells(book) {
         return `
-        <td>${this.title}</td>
-        <td>${this.author}</td>
-        <td>${this.pages}</td>
-        <td><button class="read-button">${this.read}</button></td>
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.pages}</td>
+        <td><button class="read-button">${book.read}</button></td>
         <td><button class="delete-button">X</button></td>`;
 }
-}
+
 
 
 //Renders Library Items into table
@@ -43,7 +44,7 @@ function render(myLibrary, node){
     node.innerHTML = tableHeader;
     myLibrary.forEach(book => {
     let row = document.createElement('tr');
-    row.innerHTML = book.bookCells();
+    row.innerHTML = bookCells(book);
     row.querySelector(".read-button").addEventListener('click', (e) => {
         if(e.target.innerHTML == "Read"){
             e.target.innerHTML = "Unread";
@@ -54,6 +55,7 @@ function render(myLibrary, node){
     row.querySelector(".delete-button").addEventListener('click', (e) => {
         e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode);
         myLibrary.splice(myLibrary.indexOf(book), 1);
+        setLocalStorage();
     });
     node.append(row);
 });
@@ -62,12 +64,21 @@ function render(myLibrary, node){
 //On Form Submit
 form.addEventListener('submit', () => {
     event.preventDefault();
-    newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value);
     myLibrary.push(new Book(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value));
     render(myLibrary, bookList);
+    setLocalStorage();
     form.reset();
 });
 
-
+getLocalStorage();
 render(myLibrary, bookList);
+
 //Setting Local Storage
+
+function setLocalStorage(){
+    localStorage.setItem('library', JSON.stringify(myLibrary));
+};
+
+function getLocalStorage(){
+    myLibrary = JSON.parse(localStorage.getItem('library'));
+}
