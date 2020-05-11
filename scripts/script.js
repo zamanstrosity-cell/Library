@@ -6,7 +6,6 @@ const bookAuthor = document.querySelector("#author");
 const bookPages = document.getElementById("pages");
 const readStatus = document.querySelector("#readStatus");
 
-
 //Variables
 let myLibrary = [];
 let newBook;
@@ -27,7 +26,8 @@ class Book{
         this.pages = pages;
         this.read = read;
     }
-        bookCells() {
+    //Text value of book row
+    bookCells() {
         return `
         <td>${this.title}</td>
         <td>${this.author}</td>
@@ -37,26 +37,29 @@ class Book{
 }
 }
 
+
+//Renders Library Items into table
 function render(myLibrary, node){
     node.innerHTML = tableHeader;
     myLibrary.forEach(book => {
     let row = document.createElement('tr');
     row.innerHTML = book.bookCells();
-    row.querySelector(".read-button").addEventListener('click', () => {
-        if(row.querySelector(".read-button").innerHTML == "Read"){
-            row.querySelector('.read-button').innerHTML = "Unread";
+    row.querySelector(".read-button").addEventListener('click', (e) => {
+        if(e.target.innerHTML == "Read"){
+            e.target.innerHTML = "Unread";
         }else {
-            row.querySelector(".read-button").innerHTML = "Read";
+            e.target.innerHTML = "Read";
         }
     });
-    row.querySelector(".delete-button").addEventListener('click', () => {
-        row.querySelector(".delete-button").parentNode.parentNode.parentNode.removeChild(row.querySelector(".delete-button").parentNode.parentNode);
+    row.querySelector(".delete-button").addEventListener('click', (e) => {
+        e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode);
         myLibrary.splice(myLibrary.indexOf(book), 1);
     });
     node.append(row);
 });
 }
 
+//On Form Submit
 form.addEventListener('submit', () => {
     event.preventDefault();
     newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, readStatus.value);
@@ -64,3 +67,7 @@ form.addEventListener('submit', () => {
     render(myLibrary, bookList);
     form.reset();
 });
+
+
+render(myLibrary, bookList);
+//Setting Local Storage
