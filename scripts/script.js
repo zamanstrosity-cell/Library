@@ -8,7 +8,6 @@ const readStatus = document.querySelector("#readStatus");
 
 //Variables
 let myLibrary = [];
-let newBook;
 let tableHeader = `
 <tr>
 <th>Book</th>
@@ -80,5 +79,9 @@ function setLocalStorage(){
 };
 
 function getLocalStorage(){
+    if(!localStorage.getItem('library')){
+        myLibrary = [];
+    }else {
     myLibrary = JSON.parse(localStorage.getItem('library'));
+}
 }
